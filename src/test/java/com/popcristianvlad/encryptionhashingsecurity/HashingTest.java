@@ -34,18 +34,18 @@ class HashingTest {
     @ParameterizedTest
     @DisplayName("Test MD5 hashing")
     @MethodSource("md5HashingTestValues")
-    void testMD5Hashing(String valueToHash, String hexHashedValue, int outputSize) throws NoSuchAlgorithmException {
+    void testMD5Hashing(String valueToHash, String hexHashedValue, int byteOutputSize) throws NoSuchAlgorithmException {
         byte[] hashedValue = Hashing.md5Hashing(valueToHash);
         assertEquals(hexHashedValue, new String(Hex.encodeHex(hashedValue)));
-        assertEquals(outputSize, hashedValue.length);
+        assertEquals(byteOutputSize, hashedValue.length);
     }
 
     @ParameterizedTest
     @DisplayName("Test SHA-1 hashing")
     @MethodSource("sha1HashingTestValues")
-    void testSHA1Hashing(String valueToHash, String hexHashedValue, int outputSize) throws NoSuchAlgorithmException {
+    void testSHA1Hashing(String valueToHash, String hexHashedValue, int bytesOutputSize) throws NoSuchAlgorithmException {
         byte[] hashedValue = Hashing.sha1Hashing(valueToHash);
         assertEquals(hexHashedValue, new String(Hex.encodeHex(hashedValue)));
-        assertEquals(outputSize, hashedValue.length);
+        assertEquals(bytesOutputSize, hashedValue.length);
     }
 }
