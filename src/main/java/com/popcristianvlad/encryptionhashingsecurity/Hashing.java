@@ -41,6 +41,22 @@ public class Hashing {
         return hash("SHA-512/256", valueToHash);
     }
 
+    public static byte[] sha3224Hashing(String valueToHash) throws NoSuchAlgorithmException {
+        return hash("SHA3-224", valueToHash);
+    }
+
+    public static byte[] sha3256Hashing(String valueToHash) throws NoSuchAlgorithmException {
+        return hash("SHA3-256", valueToHash);
+    }
+
+    public static byte[] sha3384Hashing(String valueToHash) throws NoSuchAlgorithmException {
+        return hash("SHA3-384", valueToHash);
+    }
+
+    public static byte[] sha3512Hashing(String valueToHash) throws NoSuchAlgorithmException {
+        return hash("SHA3-512", valueToHash);
+    }
+
     private static byte[] hash(String algorithm, String valueToHash) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance(algorithm);
         return md.digest(valueToHash.getBytes(StandardCharsets.UTF_8));
