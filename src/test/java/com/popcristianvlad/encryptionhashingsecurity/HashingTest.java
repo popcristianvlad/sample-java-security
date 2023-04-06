@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class MD5HashingTest {
+class HashingTest {
 
     private static Stream<Arguments> md5HashingTestValues() {
         return Stream.of(
@@ -25,9 +25,9 @@ class MD5HashingTest {
     @ParameterizedTest
     @DisplayName("Test MD5 hashing")
     @MethodSource("md5HashingTestValues")
-    void testMD5Hashing(String valueToHash, String hexHashedValue, int md5OutputSize) throws NoSuchAlgorithmException {
-        byte[] md5HashedValue = MD5Hashing.md5Hashing(valueToHash);
-        assertEquals(hexHashedValue, new String(Hex.encodeHex(md5HashedValue)));
-        assertEquals(md5OutputSize, md5HashedValue.length);
+    void testMD5Hashing(String valueToHash, String hexHashedValue, int outputSize) throws NoSuchAlgorithmException {
+        byte[] hashedValue = Hashing.md5Hashing(valueToHash);
+        assertEquals(hexHashedValue, new String(Hex.encodeHex(hashedValue)));
+        assertEquals(outputSize, hashedValue.length);
     }
 }
