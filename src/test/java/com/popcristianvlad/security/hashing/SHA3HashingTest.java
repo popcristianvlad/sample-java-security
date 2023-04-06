@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SHA3HashingTest {
 
-    private static Stream<Arguments> sha3224HashingTestValues() {
+    private static Stream<Arguments> sha3x224HashingTestValues() {
         return Stream.of(
                 Arguments.arguments("AbcdAbcd11", "1e900ad4f6a9c60411791f9344e5112f9341a06a192999d0bea74d75", 28),
                 Arguments.arguments("AbcdAbcd12", "ea31f9d10b8ed2b5912e4181a76ab799cec98babeee6827401a981d3", 28),
@@ -22,7 +22,7 @@ class SHA3HashingTest {
         );
     }
 
-    private static Stream<Arguments> sha3256HashingTestValues() {
+    private static Stream<Arguments> sha3x256HashingTestValues() {
         return Stream.of(
                 Arguments.arguments("AbcdAbcd11", "9966e42078bd4b9c62c7a0541f338882391f13752d96ed5b1f0d88fc9a9e3ec4", 32),
                 Arguments.arguments("AbcdAbcd12", "a72f68352eb0b27709a7f2b8b74a45a4e54d839db1884f40f7b46b9bd26edd27", 32),
@@ -31,7 +31,7 @@ class SHA3HashingTest {
         );
     }
 
-    private static Stream<Arguments> sha3384HashingTestValues() {
+    private static Stream<Arguments> sha3x384HashingTestValues() {
         return Stream.of(
                 Arguments.arguments("AbcdAbcd11", "4694e5108f0e7e31614279465a7a8fe462cf2fdbeb245dc27dc211c0afd88c7017aa50fd1814fbd55582c2ae1804663c", 48),
                 Arguments.arguments("AbcdAbcd12", "35edb9aebab97f7a5c5d28489c02d3be612846e67e139b73586a1ae1944019818a121748cd3bcf70e908455884a42957", 48),
@@ -40,7 +40,7 @@ class SHA3HashingTest {
         );
     }
 
-    private static Stream<Arguments> sha3512HashingTestValues() {
+    private static Stream<Arguments> sha3x512HashingTestValues() {
         return Stream.of(
                 Arguments.arguments("AbcdAbcd11", "6fa2642a25aa29aa9519ddea2b1e624d5f17d01df7fcf9179801be21f8172a772d140dccdbe42fd4123912e19e0c343d4aacd963d02da2529dedb5a291691254", 64),
                 Arguments.arguments("AbcdAbcd12", "441dfbf41cfb59fb971d7cca75d245352cc4d7c59ad12350f3bbcbf489646965147d86a5427aaeede32b1a6f8b741a68d0d58971b50a53f22146cda34c9607af", 64),
@@ -51,36 +51,36 @@ class SHA3HashingTest {
 
     @ParameterizedTest
     @DisplayName("Test SHA3-224 hashing")
-    @MethodSource("sha3224HashingTestValues")
-    void testSHA3224Hashing(String valueToHash, String hexHashedValue, int bytesOutputSize) throws NoSuchAlgorithmException {
-        byte[] hashedValue = SHA3Hashing.sha3224Hashing(valueToHash);
+    @MethodSource("sha3x224HashingTestValues")
+    void testSHA3x224Hashing(String valueToHash, String hexHashedValue, int bytesOutputSize) throws NoSuchAlgorithmException {
+        byte[] hashedValue = SHA3Hashing.sha3x224Hashing(valueToHash);
         assertEquals(hexHashedValue, new String(Hex.encodeHex(hashedValue)));
         assertEquals(bytesOutputSize, hashedValue.length);
     }
 
     @ParameterizedTest
     @DisplayName("Test SHA3-256 hashing")
-    @MethodSource("sha3256HashingTestValues")
-    void testSHA3256Hashing(String valueToHash, String hexHashedValue, int bytesOutputSize) throws NoSuchAlgorithmException {
-        byte[] hashedValue = SHA3Hashing.sha3256Hashing(valueToHash);
+    @MethodSource("sha3x256HashingTestValues")
+    void testSHA3x256Hashing(String valueToHash, String hexHashedValue, int bytesOutputSize) throws NoSuchAlgorithmException {
+        byte[] hashedValue = SHA3Hashing.sha3x256Hashing(valueToHash);
         assertEquals(hexHashedValue, new String(Hex.encodeHex(hashedValue)));
         assertEquals(bytesOutputSize, hashedValue.length);
     }
 
     @ParameterizedTest
     @DisplayName("Test SHA3-384 hashing")
-    @MethodSource("sha3384HashingTestValues")
-    void testSHA3384Hashing(String valueToHash, String hexHashedValue, int bytesOutputSize) throws NoSuchAlgorithmException {
-        byte[] hashedValue = SHA3Hashing.sha3384Hashing(valueToHash);
+    @MethodSource("sha3x384HashingTestValues")
+    void testSHA3x384Hashing(String valueToHash, String hexHashedValue, int bytesOutputSize) throws NoSuchAlgorithmException {
+        byte[] hashedValue = SHA3Hashing.sha3x384Hashing(valueToHash);
         assertEquals(hexHashedValue, new String(Hex.encodeHex(hashedValue)));
         assertEquals(bytesOutputSize, hashedValue.length);
     }
 
     @ParameterizedTest
     @DisplayName("Test SHA3-512 hashing")
-    @MethodSource("sha3512HashingTestValues")
-    void testSHA3512Hashing(String valueToHash, String hexHashedValue, int bytesOutputSize) throws NoSuchAlgorithmException {
-        byte[] hashedValue = SHA3Hashing.sha3512Hashing(valueToHash);
+    @MethodSource("sha3x512HashingTestValues")
+    void testSHA3x512Hashing(String valueToHash, String hexHashedValue, int bytesOutputSize) throws NoSuchAlgorithmException {
+        byte[] hashedValue = SHA3Hashing.sha3x512Hashing(valueToHash);
         assertEquals(hexHashedValue, new String(Hex.encodeHex(hashedValue)));
         assertEquals(bytesOutputSize, hashedValue.length);
     }
